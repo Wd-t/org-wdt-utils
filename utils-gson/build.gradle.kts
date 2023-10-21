@@ -3,6 +3,7 @@ plugins {
 }
 
 group = "org.wdt.utils.gson"
+version = rootProject.version
 
 dependencies {
     implementation(project(":utils-io"))

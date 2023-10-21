@@ -8,9 +8,16 @@ import java.io.File
 
 
 object Json {
+    @JvmStatic
     val FILE_GSON: Gson = getBuilder().setPrettyPrinting().create()
+
+    @JvmStatic
     val GSON: Gson = getBuilder().create()
+
+    @JvmStatic
     val GSONBUILDER: GsonBuilder = getBuilder()
+
+    @JvmStatic
     fun getBuilder(): GsonBuilder {
         return GsonBuilder().disableHtmlEscaping().registerTypeAdapter(File::class.java, FileTypeAdapter())
     }
