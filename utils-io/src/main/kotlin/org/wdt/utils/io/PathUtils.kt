@@ -10,6 +10,10 @@ fun Path.writeStringToFile(string: String) {
     PathUtils.writeStringToFile(this, string)
 }
 
+fun Path.writeStringToFile(string: String, boolean: Boolean) {
+    PathUtils.writeStringToFile(this, string, boolean)
+}
+
 fun Path.touch() {
     PathUtils.touch(this)
 }
@@ -44,6 +48,10 @@ fun Path.isFileExists(): Boolean {
 
 fun Path.isFileNotExistsAndIsNotSameSize(long: Long): Boolean {
     return PathUtils.isFileNotExistsAndIsNotSameSize(this, long)
+}
+
+fun Path.createDirectories() {
+    PathUtils.createDirectories(this)
 }
 
 fun Path.getFileSha1(): String {

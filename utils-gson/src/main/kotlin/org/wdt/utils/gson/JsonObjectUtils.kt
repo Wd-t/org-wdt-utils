@@ -28,12 +28,12 @@ object JsonObjectUtils {
 
     @JvmStatic
     fun <T> parseObject(jsonString: String, clazz: Class<T>): T {
-        return Json.GSON.fromJson(jsonString, clazz)
+        return Json.gson.fromJson(jsonString, clazz)
     }
 
     @JvmStatic
     fun <T> parseObject(jsonElement: JsonElement, clazz: Class<T>): T {
-        return Json.GSON.fromJson(jsonElement, clazz)
+        return Json.gson.fromJson(jsonElement, clazz)
     }
 
 }

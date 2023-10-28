@@ -8,7 +8,7 @@ object JsonFileUtils {
     @JvmStatic
     fun formatJsonFile(file: File) {
         try {
-            file.writeStringToFile(Json.FILE_GSON.toJson(JsonUtils.getJsonObject(file)))
+            file.writeStringToFile(Json.fileGson.toJson(JsonUtils.getJsonObject(file)))
         } catch (_: IOException) {
         }
     }

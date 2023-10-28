@@ -12,9 +12,16 @@ public class PathUtils {
         return IOUtils.toString(Files.newBufferedReader(FilePath));
     }
 
-    public static void writeStringToFile(Path path, String s) throws IOException {
+    public static void writeStringToFile(Path path, String s, boolean append) throws IOException {
         touch(path);
+        if (append) {
+            s = readFileToString(path) + "\n" + s;
+        }
         IOUtils.write(Files.newBufferedWriter(path), s);
+    }
+
+    public static void writeStringToFile(Path path, String s) throws IOException {
+        writeStringToFile(path, s, false);
     }
 
     public static void touch(Path path) throws IOException {
@@ -81,7 +88,14 @@ public class PathUtils {
     }
 
     public static boolean isFileNotExistsAndIsNotSameSize(Path path, long l) throws IOException {
-        return isFileNotExists(path) && sizeOf(path) != l;
+        if (isFileExists(path)) {
+            return sizeOf(path) != l;
+        }
+        return true;
+    }
+
+    public static void createDirectories(Path path) throws IOException {
+        Files.createDirectories(path);
     }
 
     public static void ckeckIsDirectory(Path path) throws IOException {

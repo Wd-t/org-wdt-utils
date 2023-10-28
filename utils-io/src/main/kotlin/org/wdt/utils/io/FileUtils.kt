@@ -13,6 +13,10 @@ fun File.writeStringToFile(string: String) {
     FileUtils.writeStringToFile(this, string)
 }
 
+fun File.writeStringToFile(string: String, boolean: Boolean) {
+    FileUtils.writeStringToFile(this, string, boolean)
+}
+
 fun File.touch() {
     FileUtils.touch(this)
 }

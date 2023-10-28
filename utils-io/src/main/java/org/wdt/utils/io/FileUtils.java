@@ -15,9 +15,14 @@ public class FileUtils {
         return PathUtils.readFileToString(file.toPath());
     }
 
-    public static void writeStringToFile(File file, String s) throws IOException {
-        PathUtils.writeStringToFile(file.toPath(), s);
+    public static void writeStringToFile(File file, String s, boolean append) throws IOException {
+        PathUtils.writeStringToFile(file.toPath(), s, append);
     }
+
+    public static void writeStringToFile(File file, String s) throws IOException {
+        writeStringToFile(file, s, false);
+    }
+
 
     public static void touch(File file) throws IOException {
         PathUtils.touch(file.toPath());
@@ -61,7 +66,6 @@ public class FileUtils {
     }
 
     public static void createDirectories(File file) throws IOException {
-        ckeckIsDirectory(file);
         Files.createDirectories(file.toPath());
     }
 

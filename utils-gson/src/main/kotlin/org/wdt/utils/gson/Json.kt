@@ -9,13 +9,13 @@ import java.io.File
 
 object Json {
     @JvmStatic
-    val FILE_GSON: Gson = getBuilder().setPrettyPrinting().create()
+    val fileGson: Gson = getBuilder().setPrettyPrinting().create()
 
     @JvmStatic
-    val GSON: Gson = getBuilder().create()
+    val gson: Gson = getBuilder().create()
 
     @JvmStatic
-    val GSONBUILDER: GsonBuilder = getBuilder()
+    val gsonBuilder: GsonBuilder = getBuilder()
 
     @JvmStatic
     fun getBuilder(): GsonBuilder {

@@ -24,6 +24,7 @@ fun JsonArray.getLong(index: Int): Long {
 }
 
 object JsonArrayUtils {
+    @JvmStatic
     fun parseArray(jsonString: String): JsonArray {
         return JsonParser.parseString(jsonString).asJsonArray
     }
