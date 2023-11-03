@@ -6,6 +6,7 @@ import java.nio.file.Path;
 import java.nio.file.attribute.FileTime;
 import java.time.Instant;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class PathUtils {
     public static String readFileToString(Path FilePath) throws IOException {
@@ -69,7 +70,7 @@ public class PathUtils {
     public static long sizeOfDirectory(Path path) throws IOException {
         ckeckIsDirectory(path);
         long dirSize = 0;
-        for (Path path1 : Files.list(path).toList()) {
+        for (Path path1 : Files.list(path).collect(Collectors.toList())) {
             if (Files.isDirectory(path1)) {
                 sizeOfDirectory(path1);
             } else {
