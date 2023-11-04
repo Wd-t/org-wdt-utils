@@ -12,5 +12,4 @@ subprojects {
         plugin("maven-publish")
     }
 }
-
-version = "1.1.2.1"
+group = "org.wdt.utils"

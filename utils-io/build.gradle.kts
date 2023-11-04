@@ -3,7 +3,7 @@ plugins {
 }
 
 group = "org.wdt.utils.io"
-version = rootProject.version
+version = "1.1.2.2"
 dependencies {
     testImplementation(kotlin("test"))
 }

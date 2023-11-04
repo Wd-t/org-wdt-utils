@@ -1,7 +1,7 @@
 package org.wdt.utils.gson
 
 import com.google.gson.JsonArray
-import com.google.gson.JsonParser
+import com.google.gson.JsonObject
 
 fun JsonArray.getString(index: Int): String {
     return this.get(index).asString
@@ -23,11 +23,23 @@ fun JsonArray.getLong(index: Int): Long {
     return this.get(index).asLong
 }
 
-object JsonArrayUtils {
-    @JvmStatic
-    fun parseArray(jsonString: String): JsonArray {
-        return JsonParser.parseString(jsonString).asJsonArray
-    }
-
-
+fun JsonArray.getJsonObject(index: Int): JsonObject {
+    return this.get(index).asJsonObject;
 }
+
+fun JsonArray.getJsonArray(index: Int): JsonArray {
+    return this.get(index).asJsonArray;
+}
+
+fun String.parseArray(): JsonArray {
+    return JsonArrayUtils.parseArray(this)
+}
+
+inline fun <reified T : Iterable<T>> String.parseArray(): T {
+    return JsonArrayUtils.parseArray(this, T::class.java);
+}
+
+inline fun <reified T : Iterable<T>> JsonArray.parseArray(): T {
+    return JsonArrayUtils.parseArray(this, T::class.java);
+}
+

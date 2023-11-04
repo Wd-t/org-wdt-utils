@@ -1,8 +1,7 @@
 package org.wdt.utils.gson
 
-import com.google.gson.JsonElement
+import com.google.gson.JsonArray
 import com.google.gson.JsonObject
-import com.google.gson.JsonParser
 
 fun JsonObject.getString(key: String): String {
     return this.get(key).asString
@@ -20,20 +19,22 @@ fun JsonObject.getDouble(key: String): Double {
     return this.get(key).asDouble
 }
 
-object JsonObjectUtils {
-    @JvmStatic
-    fun parseObject(jsonString: String): JsonObject {
-        return JsonParser.parseString(jsonString).asJsonObject
-    }
+fun JsonObject.getJsonObject(key: String): JsonObject {
+    return this.get(key).asJsonObject
+}
 
-    @JvmStatic
-    fun <T> parseObject(jsonString: String, clazz: Class<T>): T {
-        return Json.gson.fromJson(jsonString, clazz)
-    }
+fun JsonObject.getJsonArray(key: String): JsonArray {
+    return this.get(key).asJsonArray
+}
 
-    @JvmStatic
-    fun <T> parseObject(jsonElement: JsonElement, clazz: Class<T>): T {
-        return Json.gson.fromJson(jsonElement, clazz)
-    }
+inline fun <reified T> JsonObject.parseObject(): T {
+    return JsonObjectUtils.parseObject(this, T::class.java)
+}
 
+inline fun <reified T> String.parseObject(): T {
+    return JsonObjectUtils.parseObject(this, T::class.java)
+}
+
+fun String.parseObject(): JsonObject {
+    return JsonObjectUtils.parseObject(this)
 }
