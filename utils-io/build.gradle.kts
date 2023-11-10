@@ -1,9 +1,10 @@
 plugins {
-    kotlin("jvm") version "1.9.0"
+    kotlin("jvm") version "1.9.20"
 }
 
 group = "org.wdt.utils.io"
-version = "1.1.2.2"
+version = rootProject.version
+
 dependencies {
     testImplementation(kotlin("test"))
 }

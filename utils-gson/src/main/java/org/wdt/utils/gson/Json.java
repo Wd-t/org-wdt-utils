@@ -13,4 +13,8 @@ public class Json {
     public static GsonBuilder getBuilder() {
         return new GsonBuilder().disableHtmlEscaping().registerTypeAdapter(File.class, new FileTypeAdapter());
     }
+
+    public static String toJsonString(Object o) {
+        return GSON.toJson(o);
+    }
 }

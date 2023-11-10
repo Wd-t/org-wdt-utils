@@ -20,6 +20,7 @@ fun File.readFileToJsonArray(): JsonArray {
     return JsonUtils.getJsonArray(this)
 }
 
+
 inline fun <reified T> File.readFileToClass(): T {
     return JsonUtils.readFileToClass(this, T::class.java)
 }

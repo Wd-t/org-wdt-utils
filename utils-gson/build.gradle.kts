@@ -1,9 +1,9 @@
 plugins {
-    kotlin("jvm") version "1.9.0"
+    kotlin("jvm") version "1.9.20"
 }
 
 group = "org.wdt.utils.gson"
-version = "1.2.0"
+version = rootProject.version
 
 dependencies {
     implementation(project(":utils-io"))
