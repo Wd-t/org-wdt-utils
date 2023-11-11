@@ -10,7 +10,7 @@ import java.io.IOException;
 public class JsonUtils {
 
     public static JsonObject getJsonObject(File jsonFile) throws IOException {
-        return JsonObjectUtils.parseObject(FileUtils.readFileToString(jsonFile));
+        return JsonObjectUtils.parseJsonObject(FileUtils.readFileToString(jsonFile));
     }
 
     public static <T> T readFileToClass(File jsonFile, Class<T> clazz) throws IOException {
@@ -23,6 +23,6 @@ public class JsonUtils {
 
 
     public static JsonArray getJsonArray(File jsonFile) throws IOException {
-        return JsonArrayUtils.parseArray(FileUtils.readFileToString(jsonFile));
+        return JsonArrayUtils.parseJsonArray(FileUtils.readFileToString(jsonFile));
     }
 }

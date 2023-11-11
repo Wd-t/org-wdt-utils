@@ -6,7 +6,7 @@ import com.google.gson.JsonParser;
 
 public class JsonObjectUtils {
 
-    public static JsonObject parseObject(String jsonString) {
+    public static JsonObject parseJsonObject(String jsonString) {
         return JsonParser.parseString(jsonString).getAsJsonObject();
     }
 

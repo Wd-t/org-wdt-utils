@@ -35,6 +35,6 @@ inline fun <reified T> String.parseObject(): T {
     return JsonObjectUtils.parseObject(this, T::class.java)
 }
 
-fun String.parseObject(): JsonObject {
-    return JsonObjectUtils.parseObject(this)
+fun String.parseJsonObject(): JsonObject {
+    return JsonObjectUtils.parseJsonObject(this)
 }

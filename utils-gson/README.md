@@ -38,15 +38,16 @@ import kotlin.test.Test
 
 class KotlinTest {
     @Test
-    fun testJsonForJava() {
+    fun testJsonForKotlin() {
         val jsonStr = """
             {
                 "Hello": "World"
             }
         """.trimIndent()
-        val testJsonObject = JsonObjectUtils.parseObject(jsonStr)
+        val testJsonObject = jsonStr.parseJsonObject()
         println(testJsonObject.getString("Hello"))
     }
 }
+
 
 ```

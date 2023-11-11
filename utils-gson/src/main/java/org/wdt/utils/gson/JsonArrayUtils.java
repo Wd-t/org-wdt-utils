@@ -4,7 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonParser;
 
 public class JsonArrayUtils {
-    public static JsonArray parseArray(String jsonString) {
+    public static JsonArray parseJsonArray(String jsonString) {
         return JsonParser.parseString(jsonString).getAsJsonArray();
     }
 
