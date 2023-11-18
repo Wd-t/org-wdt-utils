@@ -54,6 +54,9 @@ fun Path.createDirectories() {
     PathUtils.createDirectories(this)
 }
 
+fun Path.getExtension(): String {
+	return FilenameUtils.getExtension(this.toFile().canonicalPath)
+}
 fun Path.getFileSha1(): String {
     return PathUtils.getFileSha1(this)
 }

@@ -1,5 +1,6 @@
 package org.wdt.utils.io;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -15,10 +16,8 @@ public class PathUtils {
 
     public static void writeStringToFile(Path path, String s, boolean append) throws IOException {
         touch(path);
-        if (append) {
-            s = readFileToString(path) + "\n" + s;
-        }
-        IOUtils.write(Files.newBufferedWriter(path), s);
+        FileWriter writer = new FileWriter(path.toFile(), append);
+        IOUtils.write(writer, s);
     }
 
     public static void writeStringToFile(Path path, String s) throws IOException {

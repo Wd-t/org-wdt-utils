@@ -116,6 +116,10 @@ public class FileUtils {
         return new File(parent, child);
     }
 
+    public static File toFile(File parent, String name, String extension) {
+        return new File(parent, name + "." + extension);
+    }
+
     public static String getFileSha1(File file) throws IOException {
         return IOUtils.getInputStreamSha1(newInputStream(file));
     }

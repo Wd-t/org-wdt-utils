@@ -73,6 +73,9 @@ fun File.isFileNotExists(): Boolean {
     return FileUtils.isFileNotExists(this)
 }
 
+fun File.getExtension(): String {
+	return FilenameUtils.getExtension(this.canonicalPath)
+}
 
 fun File.getFileSha1(): String {
     return FileUtils.getFileSha1(this)
