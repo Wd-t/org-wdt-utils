@@ -1,5 +1,6 @@
 ## org-wdt-utils
 
+[![](https://jitpack.io/v/wd-t/utils.svg)](https://jitpack.io/#wd-t/utils)
 - [utils-gson](utils-gson/README.md)
 - [utils-io](utils-io/README.md)
 
@@ -19,7 +20,7 @@ repositories {
 }
 
 dependencies {
-	implementation("com.github.wd-t.utils:utils-gson:1.2.2")
-	implementation("com.github.wd-t.utils:utils-io:1.2.2")
+	implementation("com.github.wd-t.utils:utils-gson:1.2.4")
+	implementation("com.github.wd-t.utils:utils-io:1.2.4")
 }
 ```
