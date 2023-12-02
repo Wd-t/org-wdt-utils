@@ -1,31 +1,29 @@
-@file:Suppress("NOTHING_TO_INLINE")
-
 package org.wdt.utils.gson
 
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 
-inline fun JsonObject.getString(key: String): String {
+fun JsonObject.getString(key: String): String {
     return this.get(key).asString
 }
 
-inline fun JsonObject.getInt(key: String): Int {
+fun JsonObject.getInt(key: String): Int {
     return this.get(key).asInt
 }
 
-inline fun JsonObject.getBoolean(key: String): Boolean {
+fun JsonObject.getBoolean(key: String): Boolean {
     return this.get(key).asBoolean
 }
 
-inline fun JsonObject.getDouble(key: String): Double {
+fun JsonObject.getDouble(key: String): Double {
     return this.get(key).asDouble
 }
 
-inline fun JsonObject.getJsonObject(key: String): JsonObject {
+fun JsonObject.getJsonObject(key: String): JsonObject {
     return this.get(key).asJsonObject
 }
 
-inline fun JsonObject.getJsonArray(key: String): JsonArray {
+fun JsonObject.getJsonArray(key: String): JsonArray {
     return this.get(key).asJsonArray
 }
 

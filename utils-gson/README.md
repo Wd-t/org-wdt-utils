@@ -4,34 +4,28 @@
 
 - 只是把一些在FastJson上常用的函数用Kotlin在Gson上拓展了
 
-#### 以前:
+#### Java:
 
-```java
+```text
 package org.wdt.utils.gson;
 
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import org.junit.jupiter.api.Test;
 
 public class TestJava {
     @Test
     public void testJsonForJava() {
-        String jsonStr = """
-                    {
-                        "Hello": "World"
-                    }
-                """;
-        JsonObject testJsonObject = JsonParser.parseString(jsonStr).getAsJsonObject();
+        String jsonStr = " {\"Hello\": \"World\"}";
+        JsonObject testJsonObject = JsonObjectUtils.parseJsonObject(jsonStr);
         System.out.println(testJsonObject.get("Hello").getAsString());
         // Out : World
     }
 }
-
 ```
 
-#### 现在:
+#### Kotlin:
 
-```kotlin
+```text
 package org.wdt.utils.gson
 
 import kotlin.test.Test

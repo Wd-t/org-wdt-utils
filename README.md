@@ -11,7 +11,7 @@
 
 ### 使用方法
 
-```kotlin
+```text
 // build.gradle.kts
 repositories {
 	maven { url = uri("https://jitpack.io") }
@@ -20,7 +20,7 @@ repositories {
 }
 
 dependencies {
-	implementation("com.github.wd-t.utils:utils-gson:1.2.4")
-	implementation("com.github.wd-t.utils:utils-io:1.2.4")
+	implementation("com.github.wd-t.utils:utils-gson:$latest_version")
+	implementation("com.github.wd-t.utils:utils-io:$latest_version")
 }
 ```

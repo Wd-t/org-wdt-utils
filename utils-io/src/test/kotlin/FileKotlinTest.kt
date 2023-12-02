@@ -1,9 +1,9 @@
 import org.wdt.utils.io.readFileToString
-import java.io.File
+import org.wdt.utils.io.toFile
 
 fun main() {
-    val file = File("./Test.txt")
-    // Test.txt : Hello World
-    println(file.readFileToString())
-    // Out : Hello World
+	val file = "./Test.txt".toFile()
+	// Test.txt : Hello World
+	println(file.readFileToString())
+	// Out : Hello World
 }

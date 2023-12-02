@@ -2,23 +2,27 @@ package org.wdt.utils.gson
 
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonArray
+import com.google.gson.JsonElement
 import com.google.gson.JsonObject
-import org.wdt.utils.io.writeStringToFile
 import java.io.File
 
 object JsonFileUtils {
 	@JvmStatic
 	fun formatJsonFile(file: File) {
-		file.writeStringToFile(Json.GSON_BUILDER.setPrettyPrinting().create().toJson(JsonUtils.getJsonObject(file)))
+		file.writeObjectToFile(file.readFileToJsonObject(), Json.GSON_BUILDER.setPrettyPrinting())
 	}
 }
 
 fun File.readFileToJsonObject(): JsonObject {
-	return JsonUtils.getJsonObject(this)
+	return JsonUtils.readFileToJsonObject(this)
 }
 
 fun File.readFileToJsonArray(): JsonArray {
-	return JsonUtils.getJsonArray(this)
+	return JsonUtils.readFileToJsonArray(this)
+}
+
+fun File.readFileToJsonElement(): JsonElement {
+	return JsonUtils.readFileToJsonElement(this)
 }
 
 inline fun <reified T> File.readFileToClass(): T {

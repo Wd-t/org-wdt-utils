@@ -9,11 +9,8 @@ fun File.readFileToString(): String {
     return FileUtils.readFileToString(this)
 }
 
-fun File.writeStringToFile(string: String) {
-    FileUtils.writeStringToFile(this, string)
-}
 
-fun File.writeStringToFile(string: String, boolean: Boolean) {
+fun File.writeStringToFile(string: String, boolean: Boolean = false) {
     FileUtils.writeStringToFile(this, string, boolean)
 }
 
@@ -74,9 +71,13 @@ fun File.isFileNotExists(): Boolean {
 }
 
 fun File.getExtension(): String {
-	return FilenameUtils.getExtension(this.canonicalPath)
+    return this.extension
 }
 
 fun File.getFileSha1(): String {
     return FileUtils.getFileSha1(this)
+}
+
+fun String.toFile(): File {
+    return File(this)
 }

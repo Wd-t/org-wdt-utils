@@ -21,4 +21,5 @@ public class Json {
     public static String toJsonString(Object o, GsonBuilder builder) {
         return builder.create().toJson(o);
     }
+
 }
