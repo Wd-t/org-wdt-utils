@@ -93,11 +93,11 @@ public class FileUtils {
     }
 
     public static boolean isFileNotExists(File file) throws IOException {
-        return PathUtils.isFileNotExists(file.toPath());
+        return !file.exists();
     }
 
     public static boolean isFileExists(File file) {
-        return PathUtils.isFileExists(file.toPath());
+        return file.exists();
     }
 
     public static boolean isFileNotExistsAndIsNotSameSize(File file, long l) throws IOException {

@@ -1,6 +1,7 @@
 package org.wdt.utils.io
 
 import java.io.File
+import java.io.FileReader
 import java.io.InputStream
 import java.io.OutputStream
 import java.util.*
@@ -80,4 +81,16 @@ fun File.getFileSha1(): String {
 
 fun String.toFile(): File {
     return File(this)
+}
+
+fun String.toFile(child: String): File {
+    return File(this, child)
+}
+
+fun File.toFile(child: String): File {
+    return File(this, child)
+}
+
+fun File.newReader(): FileReader {
+    return FileReader(this)
 }

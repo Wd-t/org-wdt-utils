@@ -35,11 +35,11 @@ fun String.parseJsonArray(): JsonArray {
 	return JsonArrayUtils.parseJsonArray(this)
 }
 
-inline fun <reified T : Iterable<T>> String.parseArray(): T {
+inline fun <reified T> String.parseArray(): T {
 	return JsonArrayUtils.parseArray(this, T::class.java);
 }
 
-inline fun <reified T : Iterable<T>> JsonArray.parseArray(): T {
+inline fun <reified T> JsonArray.parseArray(): T {
 	return JsonArrayUtils.parseArray(this, T::class.java);
 }
 

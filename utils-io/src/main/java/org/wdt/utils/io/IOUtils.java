@@ -56,12 +56,12 @@ public class IOUtils {
         return toString(url.openStream());
     }
 
-    public static String getInputStreamSha1(InputStream in) {
+    public static String getInputStreamSha1(InputStream stream) {
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-1");
             byte[] buffer = new byte[1024 * 1024 * 10];
             int len;
-            while ((len = in.read(buffer)) > 0) {
+            while ((len = stream.read(buffer)) > 0) {
                 digest.update(buffer, 0, len);
             }
             StringBuilder sha1 = new StringBuilder(new BigInteger(1, digest.digest()).toString(16));
