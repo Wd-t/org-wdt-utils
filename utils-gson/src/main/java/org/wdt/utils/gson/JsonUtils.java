@@ -28,7 +28,9 @@ public class JsonUtils {
     }
 
     public static void writeObjectToFile(File jsonFile, Object o, GsonBuilder builder) throws IOException {
-        new FileWriter(jsonFile).write(builder.create().toJson(o));
+        FileWriter writer = new FileWriter(jsonFile);
+        writer.write(builder.create().toJson(o));
+        writer.close();
     }
 
     public static JsonElement parseJsonElement(String jsonStr) {

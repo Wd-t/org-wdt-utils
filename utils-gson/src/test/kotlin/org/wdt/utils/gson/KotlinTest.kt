@@ -1,5 +1,7 @@
 package org.wdt.utils.gson
 
+import com.google.gson.JsonObject
+import java.io.File
 import java.io.StringReader
 import kotlin.test.Test
 
@@ -29,5 +31,13 @@ class KotlinTest {
         println(reader.parseReaderToJsonObject().getString("Hello"))
         val list: List<String>? = jsonArray?.parseArray()
         println(list)
+    }
+
+    @Test
+    fun testWriteFile() {
+        val jsonObject = JsonObject()
+        jsonObject.addProperty("hello", "world")
+        val file = File("./json.json")
+        file.writeObjectToFile(jsonObject)
     }
 }
