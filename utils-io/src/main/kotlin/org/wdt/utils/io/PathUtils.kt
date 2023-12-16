@@ -63,3 +63,11 @@ fun Path.getFileSha1(): String {
 fun String.toPath(): Path {
 	return Path(this)
 }
+
+fun String.toPath(child: String): Path {
+	return Path(this, child)
+}
+
+fun Path.deleteFile() {
+	PathUtils.deleteFile(this)
+}

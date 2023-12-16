@@ -108,4 +108,9 @@ public class PathUtils {
         return IOUtils.getInputStreamSha1(Files.newInputStream(path));
     }
 
+    public static void deleteFile(Path path) throws IOException {
+        if (!Files.deleteIfExists(path)) {
+            throw new IOException(path + " not delete");
+        }
+    }
 }

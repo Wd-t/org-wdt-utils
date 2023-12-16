@@ -22,7 +22,7 @@ fun Reader.toStrings(): String {
     return IOUtils.toString(this)
 }
 
-fun URL.toStirngs(): String {
+fun URL.toStrings(): String {
     return IOUtils.toString(this)
 }
 

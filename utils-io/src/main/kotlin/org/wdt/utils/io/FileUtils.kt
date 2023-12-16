@@ -10,6 +10,9 @@ fun File.readFileToString(): String {
     return FileUtils.readFileToString(this)
 }
 
+fun File.deleteFile() {
+    FileUtils.deleteFile(this)
+}
 
 fun File.writeStringToFile(string: String, boolean: Boolean = false) {
     FileUtils.writeStringToFile(this, string, boolean)

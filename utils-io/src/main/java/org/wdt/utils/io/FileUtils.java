@@ -92,7 +92,7 @@ public class FileUtils {
         }
     }
 
-    public static boolean isFileNotExists(File file) throws IOException {
+    public static boolean isFileNotExists(File file) {
         return !file.exists();
     }
 
@@ -126,5 +126,12 @@ public class FileUtils {
 
     public static long sizeOf(File file) throws IOException {
         return PathUtils.sizeOf(file.toPath());
+    }
+
+    public static void deleteFile(File file) throws IOException {
+        if (isFileNotExists(file)) {
+            return;
+        }
+        PathUtils.deleteFile(file.toPath());
     }
 }
