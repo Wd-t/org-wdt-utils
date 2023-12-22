@@ -1,5 +1,6 @@
 package org.wdt.utils.gson;
 
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
@@ -16,10 +17,17 @@ public class JsonObjectUtils {
     }
 
     public static <T> T parseObject(String jsonString, Class<T> clazz) {
-        return Json.GSON.fromJson(jsonString, clazz);
+        return parseObject(jsonString, clazz, Json.getBuilder());
+    }
+    public static <T> T parseObject(String jsonString, Class<T> clazz, GsonBuilder builder) {
+        return builder.create().fromJson(jsonString, clazz);
     }
 
     public static <T> T parseObject(JsonElement jsonElement, Class<T> clazz) {
-        return Json.GSON.fromJson(jsonElement, clazz);
+        return parseObject(jsonElement, clazz, Json.getBuilder());
     }
+    public static <T> T parseObject(JsonElement jsonElement, Class<T> clazz, GsonBuilder builder) {
+        return builder.create().fromJson(jsonElement, clazz);
+    }
+
 }

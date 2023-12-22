@@ -22,6 +22,9 @@ public class JsonUtils {
     public static <T> T readFileToClass(File jsonFile, Class<T> clazz) throws IOException {
         return JsonObjectUtils.parseObject(readFileToJsonElement(jsonFile), clazz);
     }
+    public static <T> T readFileToClass(File jsonFile, Class<T> clazz, GsonBuilder builder) throws IOException {
+        return JsonObjectUtils.parseObject(readFileToJsonElement(jsonFile), clazz, builder);
+    }
 
     public static void writeObjectToFile(File jsonFile, Object o) throws IOException {
         writeObjectToFile(jsonFile, o, Json.GSON.newBuilder());

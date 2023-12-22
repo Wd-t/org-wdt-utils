@@ -1,5 +1,6 @@
 package org.wdt.utils.gson
 
+import com.google.gson.GsonBuilder
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 
@@ -27,12 +28,12 @@ fun JsonObject.getJsonArray(key: String): JsonArray {
     return this.get(key).asJsonArray
 }
 
-inline fun <reified T> JsonObject.parseObject(): T {
-    return JsonObjectUtils.parseObject(this, T::class.java)
+inline fun <reified T> JsonObject.parseObject(builder: GsonBuilder = Json.getBuilder()): T {
+    return JsonObjectUtils.parseObject(this, T::class.java, builder)
 }
 
-inline fun <reified T> String.parseObject(): T {
-    return JsonObjectUtils.parseObject(this, T::class.java)
+inline fun <reified T> String.parseObject(builder: GsonBuilder = Json.getBuilder()): T {
+    return JsonObjectUtils.parseObject(this, T::class.java, builder)
 }
 
 fun String.parseJsonObject(): JsonObject {

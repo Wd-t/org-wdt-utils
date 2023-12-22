@@ -7,8 +7,8 @@ import com.google.gson.JsonObject
 import java.io.File
 
 
-fun formatJsonFile(file: File) {
-    file.writeObjectToFile(file.readFileToJsonObject(), Json.GSON_BUILDER.setPrettyPrinting())
+fun File.formatJsonFile() {
+    this.writeObjectToFile(this.readFileToJsonObject(), Json.getBuilder().setPrettyPrinting())
 }
 
 fun File.readFileToJsonObject(): JsonObject {
@@ -23,14 +23,10 @@ fun File.readFileToJsonElement(): JsonElement {
     return JsonUtils.readFileToJsonElement(this)
 }
 
-inline fun <reified T> File.readFileToClass(): T {
-    return JsonUtils.readFileToClass(this, T::class.java)
+inline fun <reified T> File.readFileToClass(builder: GsonBuilder = Json.getBuilder()): T {
+    return JsonUtils.readFileToClass(this, T::class.java, builder)
 }
 
-fun File.writeObjectToFile(o: Any) {
-    return JsonUtils.writeObjectToFile(this, o)
-}
-
-fun File.writeObjectToFile(o: Any, builder: GsonBuilder) {
-    JsonUtils.writeObjectToFile(this, o, builder)
+fun File.writeObjectToFile(o: Any, builder: GsonBuilder = Json.getBuilder()) {
+    return JsonUtils.writeObjectToFile(this, o, builder)
 }

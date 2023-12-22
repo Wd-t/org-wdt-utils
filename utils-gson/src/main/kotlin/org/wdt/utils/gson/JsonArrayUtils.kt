@@ -1,5 +1,6 @@
 package org.wdt.utils.gson
 
+import com.google.gson.GsonBuilder
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 
@@ -24,22 +25,22 @@ fun JsonArray.getLong(index: Int): Long {
 }
 
 fun JsonArray.getJsonObject(index: Int): JsonObject {
-	return this.get(index).asJsonObject;
+	return this.get(index).asJsonObject
 }
 
 fun JsonArray.getJsonArray(index: Int): JsonArray {
-	return this.get(index).asJsonArray;
+	return this.get(index).asJsonArray
 }
 
 fun String.parseJsonArray(): JsonArray {
 	return JsonArrayUtils.parseJsonArray(this)
 }
 
-inline fun <reified T> String.parseArray(): T {
-	return JsonArrayUtils.parseArray(this, T::class.java);
+inline fun <reified T> String.parseArray(builder: GsonBuilder = Json.getBuilder()): T {
+	return JsonArrayUtils.parseArray(this, T::class.java, builder)
 }
 
-inline fun <reified T> JsonArray.parseArray(): T {
-	return JsonArrayUtils.parseArray(this, T::class.java);
+inline fun <reified T> JsonArray.parseArray(builder: GsonBuilder = Json.getBuilder()): T {
+	return JsonArrayUtils.parseArray(this, T::class.java, builder)
 }
 
