@@ -29,8 +29,7 @@ class KotlinTest {
         """.trimIndent()
         )
         println(reader.parseReaderToJsonObject().getString("Hello"))
-        val list: List<String>? = jsonArray?.parseArray()
-        println(list)
+        println(jsonArray?.ckeckIndex(1))
     }
 
     @Test

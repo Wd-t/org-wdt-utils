@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "1.9.21"
+    kotlin("jvm")
 }
 
 group = "org.wdt.utils.io"

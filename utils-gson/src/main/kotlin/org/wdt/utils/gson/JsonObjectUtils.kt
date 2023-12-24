@@ -5,27 +5,50 @@ import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 
 fun JsonObject.getString(key: String): String {
-    return this.get(key).asString
+    if (checkKey(key)) {
+        return this.get(key).asString
+    }
+    throwIllegalStateException(key)
 }
 
 fun JsonObject.getInt(key: String): Int {
-    return this.get(key).asInt
+    if (checkKey(key)) {
+        return this.get(key).asInt
+    }
+    throwIllegalStateException(key)
+
 }
 
 fun JsonObject.getBoolean(key: String): Boolean {
-    return this.get(key).asBoolean
-}
+    if (checkKey(key)) {
+        return this.get(key).asBoolean
+    }
+    throwIllegalStateException(key)}
 
 fun JsonObject.getDouble(key: String): Double {
-    return this.get(key).asDouble
-}
+    if (checkKey(key)) {
+        return this.get(key).asDouble
+    }
+    throwIllegalStateException(key)}
 
 fun JsonObject.getJsonObject(key: String): JsonObject {
-    return this.get(key).asJsonObject
-}
+    if (checkKey(key)) {
+        return this.get(key).asJsonObject
+    }
+    throwIllegalStateException(key)}
 
 fun JsonObject.getJsonArray(key: String): JsonArray {
-    return this.get(key).asJsonArray
+    if (checkKey(key)) {
+        return this.get(key).asJsonArray
+    }
+    throwIllegalStateException(key)}
+
+fun JsonObject.checkKey(key: String): Boolean {
+    return this.has(key) && !this.get(key).isJsonNull
+}
+
+private fun throwIllegalStateException(key: String): Nothing {
+    throw IllegalStateException("$key invalid")
 }
 
 inline fun <reified T> JsonObject.parseObject(builder: GsonBuilder = Json.getBuilder()): T {
