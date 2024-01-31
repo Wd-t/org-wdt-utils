@@ -1,9 +1,12 @@
 package org.wdt.utils.gson;
 
 import com.google.gson.*;
+import org.wdt.utils.io.FileUtils;
 
-import java.io.*;
-import java.nio.file.Files;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class JsonUtils {
 
@@ -23,6 +26,7 @@ public class JsonUtils {
     public static <T> T readFileToClass(File jsonFile, Class<T> clazz) throws IOException {
         return JsonObjectUtils.parseObject(readFileToJsonElement(jsonFile), clazz);
     }
+
     public static <T> T readFileToClass(File jsonFile, Class<T> clazz, GsonBuilder builder) throws IOException {
         return JsonObjectUtils.parseObject(readFileToJsonElement(jsonFile), clazz, builder);
     }
@@ -32,10 +36,7 @@ public class JsonUtils {
     }
 
     public static void writeObjectToFile(File jsonFile, Object o, GsonBuilder builder) throws IOException {
-        Files.createFile(jsonFile.toPath());
-        FileWriter writer = new FileWriter(jsonFile);
-        writer.write(builder.create().toJson(o));
-        writer.close();
+        FileUtils.writeStringToFile(jsonFile, builder.create().toJson(o));
     }
 
     public static JsonElement parseJsonElement(String jsonStr) {
