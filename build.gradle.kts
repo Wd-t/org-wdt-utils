@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "1.9.21" apply false
+    kotlin("jvm") version "1.9.22" apply false
 }
 
 subprojects {
@@ -14,4 +14,4 @@ subprojects {
     }
 }
 group = "org.wdt.utils"
-version = "1.3.1"
+version = "1.3.2"

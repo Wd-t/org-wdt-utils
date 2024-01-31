@@ -3,6 +3,7 @@ package org.wdt.utils.gson;
 import com.google.gson.*;
 
 import java.io.*;
+import java.nio.file.Files;
 
 public class JsonUtils {
 
@@ -31,6 +32,7 @@ public class JsonUtils {
     }
 
     public static void writeObjectToFile(File jsonFile, Object o, GsonBuilder builder) throws IOException {
+        Files.createFile(jsonFile.toPath());
         FileWriter writer = new FileWriter(jsonFile);
         writer.write(builder.create().toJson(o));
         writer.close();
