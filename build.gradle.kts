@@ -1,7 +1,3 @@
-plugins {
-    kotlin("jvm") version "1.9.22" apply false
-}
-
 subprojects {
     repositories {
         mavenLocal()
@@ -14,4 +10,4 @@ subprojects {
     }
 }
 group = "org.wdt.utils"
-version = "1.3.3"
+version = "1.3.4"

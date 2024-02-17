@@ -2,13 +2,9 @@ plugins {
     alias(libs.plugins.kotlin)
 }
 
-group = "org.wdt.utils.gson"
-version = rootProject.version
-
 dependencies {
-    implementation(project(":utils-io"))
-    implementation(libs.gson)
     implementation(libs.stdlib.jdk8)
+    implementation(libs.okio)
     testImplementation(libs.stdlib.test)
 }
 
@@ -16,10 +12,10 @@ publishing {
     publications {
         create<MavenPublication>("maven") {
             pom {
-                name = "utils-gson"
+                name = "utils-io-okio"
                 url = "https://github.com/wd-t/utils"
-                groupId = "org.wdt.utils.gson"
-                artifactId = "utils-gson"
+                groupId = "org.wdt.utils.io"
+                artifactId = "utils-io-okio"
                 version = project.version.toString()
                 developers {
                     developer {
@@ -32,11 +28,4 @@ publishing {
             }
         }
     }
-}
-
-
-
-
-tasks.test {
-    useJUnitPlatform()
 }

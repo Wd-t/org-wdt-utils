@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm")
+    alias(libs.plugins.kotlin)
 }
 
 group = "org.wdt.utils.cli"
@@ -10,7 +10,8 @@ repositories {
 }
 
 dependencies {
-    testImplementation(kotlin("test"))
+    implementation(libs.stdlib.jdk8)
+    testImplementation(libs.stdlib.test)
 }
 
 publishing {
