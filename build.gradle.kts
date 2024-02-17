@@ -10,4 +10,4 @@ subprojects {
     }
 }
 group = "org.wdt.utils"
-version = "1.3.4"
+version = "1.3.4.1"

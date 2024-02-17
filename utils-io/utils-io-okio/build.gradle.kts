@@ -16,7 +16,7 @@ publishing {
                 url = "https://github.com/wd-t/utils"
                 groupId = "org.wdt.utils.io"
                 artifactId = "utils-io-okio"
-                version = project.version.toString()
+                version = rootProject.version.toString()
                 developers {
                     developer {
                         id = "Wdt~"

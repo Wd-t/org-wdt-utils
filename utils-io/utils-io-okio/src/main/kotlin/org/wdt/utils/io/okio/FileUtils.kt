@@ -27,7 +27,7 @@ fun File.touch() {
 }
 
 fun File.readFileToLine(): List<String> {
-    return bufferedReader().lines().toList()
+    return readLines()
 }
 
 fun File.sizeOf(): Long {
