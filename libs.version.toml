@@ -1,0 +1,13 @@
+[versions]
+kotlin = "1.9.22"
+gson = "2.10.1"
+okio = "3.8.0"
+
+[libraries]
+stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
+stdlib-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
+okio = { module = "com.squareup.okio:okio", version.ref = "okio" }
+
+[plugins]
+kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }

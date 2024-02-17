@@ -1,12 +1,13 @@
 plugins {
-    kotlin("jvm")
+    alias(libs.plugins.kotlin)
 }
 
 group = "org.wdt.utils.io"
 version = rootProject.version
 
 dependencies {
-    testImplementation(kotlin("test"))
+    implementation(libs.stdlib.jdk8)
+    testImplementation(libs.stdlib.test)
 }
 
 publishing {
