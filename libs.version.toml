@@ -1,7 +1,7 @@
 [versions]
-kotlin = "1.9.0"
+kotlin = "2.0.0-RC1"
 gson = "2.10.1"
-okio = "3.8.0"
+okio = "3.9.0"
 
 [libraries]
 stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }

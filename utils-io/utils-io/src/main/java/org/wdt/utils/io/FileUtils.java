@@ -11,6 +11,7 @@ import java.util.List;
 
 public class FileUtils {
     public static final File HERE = new File(System.getProperty("user.dir"));
+
     public static String readFileToString(File file) throws IOException {
         return PathUtils.readFileToString(file.toPath());
     }

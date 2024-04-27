@@ -1,11 +1,11 @@
 rootProject.name = "utils"
 
 dependencyResolutionManagement {
-    versionCatalogs {
-        create("libs") {
-            from(files("./libs.version.toml"))
-        }
+  versionCatalogs {
+    create("libs") {
+      from(files("./libs.version.toml"))
     }
+  }
 }
 
 

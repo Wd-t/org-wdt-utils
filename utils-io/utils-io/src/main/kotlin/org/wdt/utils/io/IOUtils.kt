@@ -7,33 +7,33 @@ import java.io.StringReader
 import java.net.URL
 
 fun InputStream.toStrings(): String {
-    return IOUtils.toString(this)
+  return IOUtils.toString(this)
 }
 
 fun InputStream.readLines(): List<String> {
-    return IOUtils.readLines(this)
+  return IOUtils.readLines(this)
 }
 
 fun Reader.readLines(): List<String> {
-    return IOUtils.readLines(this)
+  return IOUtils.readLines(this)
 }
 
 fun Reader.toStrings(): String {
-    return IOUtils.toString(this)
+  return IOUtils.toString(this)
 }
 
 fun URL.toStrings(): String {
-    return IOUtils.toString(this)
+  return IOUtils.toString(this)
 }
 
 fun InputStream.getSha1(): String {
-    return IOUtils.getInputStreamSha1(this)
+  return IOUtils.getInputStreamSha1(this)
 }
 
 fun String.toReader(): StringReader {
-    return StringReader(this)
+  return StringReader(this)
 }
 
 fun InputStream.toReader(): InputStreamReader {
-    return InputStreamReader(this)
+  return InputStreamReader(this)
 }

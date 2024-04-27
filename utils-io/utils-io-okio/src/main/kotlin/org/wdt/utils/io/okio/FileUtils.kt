@@ -6,75 +6,75 @@ import java.io.File
 import java.nio.file.Files
 
 fun File.readFileToString(): String {
-    return fileSystem.read(toOkioPath()) {
-        readUtf8()
-    }
+  return fileSystem.read(toOkioPath()) {
+    readUtf8()
+  }
 }
 
 fun File.deleteFile() {
-    fileSystem.delete(toOkioPath(), false)
+  fileSystem.delete(toOkioPath(), false)
 }
 
 fun File.writeStringToFile(string: String) {
-    return fileSystem.write(toOkioPath()) {
-        writeUtf8(string)
-    }
+  return fileSystem.write(toOkioPath()) {
+    writeUtf8(string)
+  }
 }
 
 fun File.touch() {
-    fileSystem.createDirectories(toOkioPath().parent!!)
-    Files.createFile(toPath())
+  fileSystem.createDirectories(toOkioPath().parent!!)
+  Files.createFile(toPath())
 }
 
 fun File.readFileToLine(): List<String> {
-    return readLines()
+  return readLines()
 }
 
 fun File.sizeOf(): Long {
-    return fileSystem.metadata(toOkioPath()).size!!
+  return fileSystem.metadata(toOkioPath()).size!!
 }
 
 fun File.deleteDirectory() {
-    return fileSystem.deleteRecursively(toOkioPath(), false)
+  return fileSystem.deleteRecursively(toOkioPath(), false)
 }
 
 
 fun File.createDirectories() {
-    fileSystem.createDirectories(toOkioPath())
+  fileSystem.createDirectories(toOkioPath())
 }
 
 fun File.copyFile(file: File) {
-    fileSystem.copy(toOkioPath(), file.toOkioPath())
+  fileSystem.copy(toOkioPath(), file.toOkioPath())
 }
 
 fun File.sizeOfDirectory(): Long {
-    return fileSystem.metadata(toOkioPath()).size!!
+  return fileSystem.metadata(toOkioPath()).size!!
 }
 
 fun File.isFileExists(): Boolean {
-    return fileSystem.exists(toOkioPath())
+  return fileSystem.exists(toOkioPath())
 }
 
 fun File.isFileNotExists(): Boolean {
-    return !isFileExists()
+  return !isFileExists()
 }
 
 fun File.sha1(): String {
-    return fileSystem.read(toOkioPath()) {
-        readByteString().sha1().hex()
-    }
+  return fileSystem.read(toOkioPath()) {
+    readByteString().sha1().hex()
+  }
 }
 
 fun String.toFile(): File {
-    return File(this)
+  return File(this)
 }
 
 fun String.toFile(child: String): File {
-    return File(this, child)
+  return File(this, child)
 }
 
 fun File.toFile(child: String): File {
-    return File(this, child)
+  return File(this, child)
 }
 
 internal val fileSystem = FileSystem.SYSTEM

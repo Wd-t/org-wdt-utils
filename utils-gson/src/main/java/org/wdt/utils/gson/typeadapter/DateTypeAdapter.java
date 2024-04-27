@@ -39,36 +39,9 @@ import java.util.Locale;
 import static java.time.format.DateTimeFormatter.ISO_LOCAL_DATE_TIME;
 
 public class DateTypeAdapter extends TypeAdapter<Date> {
-    
-    public DateTypeAdapter() {
-    }
-    
-    @Override
-    public void write(JsonWriter out, Date value) throws IOException {
-        if (value == null) {
-            out.nullValue();
-        } else {
-            out.value(serializeToString(value));
-        }
-    }
-    
-    @Override
-    public Date read(JsonReader in) throws IOException {
-        Date date;
-        if (in.peek() == JsonToken.BEGIN_OBJECT) {
-            in.beginObject();
-            in.nextName();
-            date = deserializeToDate(in.nextString());
-            in.endObject();
-        } else {
-            date = deserializeToDate(in.nextString());
-        }
-        return date;
-    }
 
     public static final DateFormat EN_US_FORMAT = DateFormat.getDateTimeInstance(2, 2, Locale.US);
     public static final DateFormat ISO_8601_FORMAT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
-
     public static final DateTimeFormatter ISO_DATE_TIME = new DateTimeFormatterBuilder()
             .append(ISO_LOCAL_DATE_TIME)
             .optionalStart().appendOffset("+HH:MM", "+00:00").optionalEnd()
@@ -76,6 +49,9 @@ public class DateTypeAdapter extends TypeAdapter<Date> {
             .optionalStart().appendOffset("+HH", "Z").optionalEnd()
             .optionalStart().appendOffsetId().optionalEnd()
             .toFormatter();
+
+    public DateTypeAdapter() {
+    }
 
     public static Date deserializeToDate(String string) {
         synchronized (EN_US_FORMAT) {
@@ -102,6 +78,29 @@ public class DateTypeAdapter extends TypeAdapter<Date> {
             String result = ISO_8601_FORMAT.format(date);
             return result.substring(0, 22) + ":" + result.substring(22);
         }
+    }
+
+    @Override
+    public void write(JsonWriter out, Date value) throws IOException {
+        if (value == null) {
+            out.nullValue();
+        } else {
+            out.value(serializeToString(value));
+        }
+    }
+
+    @Override
+    public Date read(JsonReader in) throws IOException {
+        Date date;
+        if (in.peek() == JsonToken.BEGIN_OBJECT) {
+            in.beginObject();
+            in.nextName();
+            date = deserializeToDate(in.nextString());
+            in.endObject();
+        } else {
+            date = deserializeToDate(in.nextString());
+        }
+        return date;
     }
 
 }

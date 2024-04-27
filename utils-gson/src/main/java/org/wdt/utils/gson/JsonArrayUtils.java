@@ -11,6 +11,7 @@ public class JsonArrayUtils {
     public static JsonArray parseJsonArray(String jsonString) {
         return JsonParser.parseString(jsonString).getAsJsonArray();
     }
+
     public static JsonArray parseJsonArray(File jsonFile) throws IOException {
         return JsonUtils.readFileToJsonElement(jsonFile).getAsJsonArray();
     }
@@ -18,6 +19,7 @@ public class JsonArrayUtils {
     public static <T> T parseArray(String jsonString, Class<T> clazz) {
         return parseArray(jsonString, clazz, Json.getBuilder());
     }
+
     public static <T> T parseArray(String jsonString, Class<T> clazz, GsonBuilder builder) {
         return builder.create().fromJson(jsonString, clazz);
     }
@@ -26,6 +28,7 @@ public class JsonArrayUtils {
     public static <T> T parseArray(JsonArray jsonArray, Class<T> clazz) {
         return parseArray(jsonArray, clazz, Json.getBuilder());
     }
+
     public static <T> T parseArray(JsonArray jsonArray, Class<T> clazz, GsonBuilder builder) {
         return builder.create().fromJson(jsonArray, clazz);
     }

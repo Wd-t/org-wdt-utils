@@ -8,25 +8,25 @@ import java.io.File
 
 
 fun File.formatJsonFile() {
-    this.writeObjectToFile(this.readFileToJsonObject(), Json.getBuilder().setPrettyPrinting())
+  this.writeObjectToFile(this.readFileToJsonObject(), Json.getBuilder().setPrettyPrinting())
 }
 
 fun File.readFileToJsonObject(): JsonObject {
-    return JsonUtils.readFileToJsonObject(this)
+  return JsonUtils.readFileToJsonObject(this)
 }
 
 fun File.readFileToJsonArray(): JsonArray {
-    return JsonUtils.readFileToJsonArray(this)
+  return JsonUtils.readFileToJsonArray(this)
 }
 
 fun File.readFileToJsonElement(): JsonElement {
-    return JsonUtils.readFileToJsonElement(this)
+  return JsonUtils.readFileToJsonElement(this)
 }
 
 inline fun <reified T> File.readFileToClass(builder: GsonBuilder = Json.getBuilder()): T {
-    return JsonUtils.readFileToClass(this, T::class.java, builder)
+  return JsonUtils.readFileToClass(this, T::class.java, builder)
 }
 
 fun File.writeObjectToFile(o: Any, builder: GsonBuilder = Json.getBuilder()) {
-    return JsonUtils.writeObjectToFile(this, o, builder)
+  return JsonUtils.writeObjectToFile(this, o, builder)
 }

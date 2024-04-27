@@ -5,69 +5,69 @@ import kotlin.io.path.Path
 import kotlin.io.path.extension
 
 fun Path.readFileToString(): String {
-	return PathUtils.readFileToString(this)
+  return PathUtils.readFileToString(this)
 }
 
 fun Path.writeStringToFile(string: String, boolean: Boolean = false) {
-	PathUtils.writeStringToFile(this, string, boolean)
+  PathUtils.writeStringToFile(this, string, boolean)
 }
 
 fun Path.touch() {
-	PathUtils.touch(this)
+  PathUtils.touch(this)
 }
 
 fun Path.readFileToLines(): List<String> {
-	return PathUtils.readFileToLines(this)
+  return PathUtils.readFileToLines(this)
 }
 
 fun Path.delete() {
-	PathUtils.delete(this)
+  PathUtils.delete(this)
 }
 
 fun Path.sizeOf(): Long {
-	return PathUtils.sizeOf(this)
+  return PathUtils.sizeOf(this)
 }
 
 fun Path.cleanDirectory() {
-	PathUtils.cleanDirectory(this)
+  PathUtils.cleanDirectory(this)
 }
 
 fun Path.deleteDirectory() {
-	PathUtils.deleteDirectory(this)
+  PathUtils.deleteDirectory(this)
 }
 
 fun Path.sizeOfDirectory(): Long {
-	return PathUtils.sizeOfDirectory(this)
+  return PathUtils.sizeOfDirectory(this)
 }
 
 fun Path.isFileExists(): Boolean {
-	return PathUtils.isFileExists(this)
+  return PathUtils.isFileExists(this)
 }
 
 fun Path.isFileNotExistsAndIsNotSameSize(long: Long): Boolean {
-	return PathUtils.isFileNotExistsAndIsNotSameSize(this, long)
+  return PathUtils.isFileNotExistsAndIsNotSameSize(this, long)
 }
 
 fun Path.createDirectories() {
-	PathUtils.createDirectories(this)
+  PathUtils.createDirectories(this)
 }
 
 fun Path.getExtension(): String {
-	return this.extension
+  return this.extension
 }
 
 fun Path.getFileSha1(): String {
-	return PathUtils.getFileSha1(this)
+  return PathUtils.getFileSha1(this)
 }
 
 fun String.toPath(): Path {
-	return Path(this)
+  return Path(this)
 }
 
 fun String.toPath(child: String): Path {
-	return Path(this, child)
+  return Path(this, child)
 }
 
 fun Path.deleteFile() {
-	PathUtils.deleteFile(this)
+  PathUtils.deleteFile(this)
 }
