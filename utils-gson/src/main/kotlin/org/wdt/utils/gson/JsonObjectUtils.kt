@@ -1,6 +1,5 @@
 package org.wdt.utils.gson
 
-import com.google.gson.GsonBuilder
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 
@@ -47,20 +46,20 @@ fun JsonObject.getJsonArray(key: String): JsonArray {
   throwIllegalStateException(key)
 }
 
+fun JsonObject(vararg pair: Pair<String, String>): JsonObject {
+  return JsonObject().apply {
+    pair.forEach {
+      addProperty(it.first, it.second)
+    }
+  }
+}
+
 fun JsonObject.checkKey(key: String): Boolean {
   return this.has(key) && !this.get(key).isJsonNull
 }
 
 private fun throwIllegalStateException(key: String): Nothing {
   throw IllegalStateException("$key invalid")
-}
-
-inline fun <reified T> JsonObject.parseObject(builder: GsonBuilder = Json.getBuilder()): T {
-  return JsonObjectUtils.parseObject(this, T::class.java, builder)
-}
-
-inline fun <reified T> String.parseObject(builder: GsonBuilder = Json.getBuilder()): T {
-  return JsonObjectUtils.parseObject(this, T::class.java, builder)
 }
 
 fun String.parseJsonObject(): JsonObject {

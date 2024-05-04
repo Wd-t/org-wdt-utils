@@ -15,7 +15,7 @@ publishing {
     create<MavenPublication>("maven") {
       pom {
         name = "utils-io"
-        url = "https://github.com/wd-t/utils"
+        url = "https://github.com/wdtve/utils"
         groupId = "org.wdt.utils.io"
         artifactId = "utils-io"
         version = project.version.toString()

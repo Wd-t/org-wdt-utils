@@ -53,6 +53,18 @@ fun JsonArray.getJsonArray(index: Int): JsonArray {
   throwIllegalStateException(index)
 }
 
+fun <T> Iterable<T>.asJsonArray(gsonBuilder: GsonBuilder = Json.getBuilder()): JsonArray {
+  return JsonArray().apply {
+    this@asJsonArray.iterator().forEach {
+      add(gsonBuilder.create().toJsonTree(it))
+    }
+  }
+}
+
+inline fun <reified T> JsonArray.asParseObjectList(builder: GsonBuilder): List<T> {
+  return asList().map { it.parseObject<T>(builder) }
+}
+
 private fun throwIllegalStateException(index: Int): Nothing {
   throw IllegalStateException("$index in array is invalid")
 }
@@ -65,11 +77,7 @@ fun String.parseJsonArray(): JsonArray {
   return JsonArrayUtils.parseJsonArray(this)
 }
 
-inline fun <reified T> String.parseArray(builder: GsonBuilder = Json.getBuilder()): T {
-  return JsonArrayUtils.parseArray(this, T::class.java, builder)
-}
-
-inline fun <reified T> JsonArray.parseArray(builder: GsonBuilder = Json.getBuilder()): T {
-  return JsonArrayUtils.parseArray(this, T::class.java, builder)
+inline fun <reified T> JsonArray.parseObject(builder: GsonBuilder = Json.getBuilder()): T {
+  return JsonUtils.parseObject(this, T::class.java, builder)
 }
 

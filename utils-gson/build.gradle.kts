@@ -17,7 +17,7 @@ publishing {
     create<MavenPublication>("maven") {
       pom {
         name = "utils-gson"
-        url = "https://github.com/wd-t/utils"
+        url = "https://github.com/wdtve/utils"
         groupId = "org.wdt.utils.gson"
         artifactId = "utils-gson"
         version = project.version.toString()

@@ -8,7 +8,9 @@ import java.io.File
 
 
 fun File.formatJsonFile() {
-  this.writeObjectToFile(this.readFileToJsonObject(), Json.getBuilder().setPrettyPrinting())
+  this.writeObjectToFile(Json.getBuilder().setPrettyPrinting()) {
+    readFileToJsonElement()
+  }
 }
 
 fun File.readFileToJsonObject(): JsonObject {
@@ -27,6 +29,6 @@ inline fun <reified T> File.readFileToClass(builder: GsonBuilder = Json.getBuild
   return JsonUtils.readFileToClass(this, T::class.java, builder)
 }
 
-fun File.writeObjectToFile(o: Any, builder: GsonBuilder = Json.getBuilder()) {
-  return JsonUtils.writeObjectToFile(this, o, builder)
+inline fun <T> File.writeObjectToFile(builder: GsonBuilder = Json.getBuilder(), block: () -> T) {
+  return JsonUtils.writeObjectToFile(this, block(), builder)
 }
