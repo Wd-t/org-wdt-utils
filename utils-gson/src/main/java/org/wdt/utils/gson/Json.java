@@ -25,5 +25,4 @@ public class Json {
     return builder.create().toJson(o);
   }
 
-
 }

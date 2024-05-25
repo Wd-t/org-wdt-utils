@@ -6,6 +6,7 @@ import java.io.StringReader
 import kotlin.test.Test
 
 class KotlinTest {
+
   @Test
   fun testJsonForKotlin() {
     val jsonStr = """
@@ -19,8 +20,8 @@ class KotlinTest {
 
   @Test
   fun testJsonArray() {
-    val jsonArray = KotlinTest::class.java.getResourceAsStream("/test.json")?.parseJsonStreamToJsonObject()
-      ?.getJsonArray("array")
+    val jsonArray =
+      KotlinTest::class.java.getResourceAsStream("/test.json")?.parseJsonStreamToJsonObject()?.getJsonArray("array")
     val reader = StringReader(
       """
              {
@@ -37,6 +38,8 @@ class KotlinTest {
     val jsonObject = JsonObject()
     jsonObject.addProperty("hello", "world")
     val file = File("./json.json")
-    file.writeObjectToFile(jsonObject)
+    file.writeObjectToFile {
+      jsonObject
+    }
   }
 }

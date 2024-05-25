@@ -3,6 +3,7 @@ package org.wdt.utils.gson
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
+import java.util.*
 
 fun JsonArray.getString(index: Int): String {
   if (ckeckIndex(index)) {
@@ -56,28 +57,30 @@ fun JsonArray.getJsonArray(index: Int): JsonArray {
 fun <T> Iterable<T>.asJsonArray(gsonBuilder: GsonBuilder = Json.getBuilder()): JsonArray {
   return JsonArray().apply {
     this@asJsonArray.iterator().forEach {
-      add(gsonBuilder.create().toJsonTree(it))
+      add(gsonBuilder.toJsonTree(it))
     }
   }
 }
 
-inline fun <reified T> JsonArray.asParseObjectList(builder: GsonBuilder): List<T> {
-  return asList().map { it.parseObject<T>(builder) }
+inline fun <reified T> JsonArray.parseObject(builder: GsonBuilder = Json.getBuilder()): List<T> {
+  return parseObjectTo(LinkedList(), builder)
 }
+
+inline fun <reified T, M : MutableCollection<in T>> JsonArray.parseObjectTo(m: M, builder: GsonBuilder = Json.getBuilder()): M {
+  return asList().run {
+    mapTo(m) { builder.fromJson<T>(it) }
+  }
+}
+
 
 private fun throwIllegalStateException(index: Int): Nothing {
   throw IllegalStateException("$index in array is invalid")
 }
 
 fun JsonArray.ckeckIndex(index: Int): Boolean {
-  return !this.get(index).isJsonNull
+  return size() <= index && !this.get(index).isJsonNull
 }
 
 fun String.parseJsonArray(): JsonArray {
   return JsonArrayUtils.parseJsonArray(this)
 }
-
-inline fun <reified T> JsonArray.parseObject(builder: GsonBuilder = Json.getBuilder()): T {
-  return JsonUtils.parseObject(this, T::class.java, builder)
-}
-
