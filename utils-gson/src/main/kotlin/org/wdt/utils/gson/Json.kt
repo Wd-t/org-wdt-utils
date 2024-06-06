@@ -15,8 +15,17 @@ fun <T> GsonBuilder.toJson(any: T): String {
   return create().toJson(any)
 }
 
+fun <T> GsonBuilder.toJson(block: () -> T): String {
+  return toJson(block())
+}
+
+
 inline fun <reified T> GsonBuilder.fromJson(jsonElement: JsonElement): T {
   return create().fromJson(jsonElement, T::class.java)
+}
+
+fun <T> GsonBuilder.toJsonTree(block: () -> T): JsonElement {
+  return toJsonTree(block())
 }
 
 

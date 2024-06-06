@@ -19,6 +19,11 @@ fun File.writeStringToFile(string: String, boolean: Boolean = false) {
   FileUtils.writeStringToFile(this, string, boolean)
 }
 
+fun File.writeStringToFile(boolean: Boolean = false, block: () -> String) {
+  FileUtils.writeStringToFile(this, block(), boolean)
+}
+
+
 fun File.touch() {
   FileUtils.touch(this)
 }
@@ -79,7 +84,7 @@ fun File.getExtension(): String {
   return this.extension
 }
 
-fun File.getFileSha1(): String {
+fun File.sha1(): String {
   return FileUtils.getFileSha1(this)
 }
 

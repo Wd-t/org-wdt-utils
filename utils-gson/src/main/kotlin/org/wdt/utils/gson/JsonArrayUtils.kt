@@ -62,11 +62,11 @@ fun <T> Iterable<T>.asJsonArray(gsonBuilder: GsonBuilder = Json.getBuilder()): J
   }
 }
 
-inline fun <reified T> JsonArray.parseObject(builder: GsonBuilder = Json.getBuilder()): List<T> {
-  return parseObjectTo(LinkedList(), builder)
+inline fun <reified T> JsonArray.parseObjectList(builder: GsonBuilder = Json.getBuilder()): List<T> {
+  return parseObjectListTo(LinkedList(), builder)
 }
 
-inline fun <reified T, M : MutableCollection<in T>> JsonArray.parseObjectTo(m: M, builder: GsonBuilder = Json.getBuilder()): M {
+inline fun <reified T, M : MutableCollection<in T>> JsonArray.parseObjectListTo(m: M, builder: GsonBuilder = Json.getBuilder()): M {
   return asList().run {
     mapTo(m) { builder.fromJson<T>(it) }
   }

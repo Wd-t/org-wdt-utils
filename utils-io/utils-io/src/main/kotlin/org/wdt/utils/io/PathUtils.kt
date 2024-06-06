@@ -56,7 +56,7 @@ fun Path.getExtension(): String {
   return this.extension
 }
 
-fun Path.getFileSha1(): String {
+fun Path.sha1(): String {
   return PathUtils.getFileSha1(this)
 }
 

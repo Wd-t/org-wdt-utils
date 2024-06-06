@@ -1,6 +1,5 @@
 subprojects {
   repositories {
-    mavenLocal()
     mavenCentral()
   }
   apply {

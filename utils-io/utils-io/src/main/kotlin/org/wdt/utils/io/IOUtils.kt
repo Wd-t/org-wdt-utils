@@ -26,7 +26,7 @@ fun URL.toStrings(): String {
   return IOUtils.toString(this)
 }
 
-fun InputStream.getSha1(): String {
+fun InputStream.sha1(): String {
   return IOUtils.getInputStreamSha1(this)
 }
 
