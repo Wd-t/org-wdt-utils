@@ -2,7 +2,6 @@ package org.wdt.utils.io
 
 import java.nio.file.Path
 import kotlin.io.path.Path
-import kotlin.io.path.extension
 
 fun Path.readFileToString(): String {
   return PathUtils.readFileToString(this)
@@ -11,6 +10,11 @@ fun Path.readFileToString(): String {
 fun Path.writeStringToFile(string: String, boolean: Boolean = false) {
   PathUtils.writeStringToFile(this, string, boolean)
 }
+
+fun Path.writeStringToFile(block: () -> String, boolean: Boolean = false) {
+  PathUtils.writeStringToFile(this, block(), boolean)
+}
+
 
 fun Path.touch() {
   PathUtils.touch(this)
@@ -44,17 +48,10 @@ fun Path.isFileExists(): Boolean {
   return PathUtils.isFileExists(this)
 }
 
-fun Path.isFileNotExistsAndIsNotSameSize(long: Long): Boolean {
-  return PathUtils.isFileNotExistsAndIsNotSameSize(this, long)
-}
-
 fun Path.createDirectories() {
   PathUtils.createDirectories(this)
 }
 
-fun Path.getExtension(): String {
-  return this.extension
-}
 
 fun Path.sha1(): String {
   return PathUtils.getFileSha1(this)

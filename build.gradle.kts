@@ -9,4 +9,4 @@ subprojects {
   }
 }
 group = "org.wdt.utils"
-version = "1.3.9-RC1"
+version = "1.3.9-RC2"
