@@ -8,6 +8,6 @@ import java.io.InputStream
 
 fun InputStream.toBufferedSource(): BufferedSource = source().buffer()
 
-fun InputStream.sha1(): String = toBufferedSource().readByteString().sha1().hex()
+fun BufferedSource.sha1(): String = readByteString().sha1().hex()
 
 fun String.base64(): String = encodeUtf8().base64()

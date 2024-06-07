@@ -94,13 +94,6 @@ public class PathUtils {
     return Files.notExists(path);
   }
 
-  public static boolean isFileNotExistsAndIsNotSameSize(Path path, long l) throws IOException {
-    if (isFileExists(path)) {
-      return sizeOf(path) != l;
-    }
-    return true;
-  }
-
   public static void createDirectories(Path path) throws IOException {
     Files.createDirectories(path);
   }

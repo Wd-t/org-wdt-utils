@@ -69,7 +69,6 @@ public class IOUtils {
       while ((len = stream.read(buffer)) > 0) {
         digest.update(buffer, 0, len);
       }
-      stream.close();
       StringBuilder sha1 = new StringBuilder(new BigInteger(1, digest.digest()).toString(16));
       int length = 40 - sha1.length();
       if (length > 0) {
@@ -77,6 +76,7 @@ public class IOUtils {
           sha1.insert(0, "0");
         }
       }
+      stream.close();
       return sha1.toString();
     } catch (IOException | NoSuchAlgorithmException e) {
       throw new RuntimeException(e);

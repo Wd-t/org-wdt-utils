@@ -1,3 +1,5 @@
+import org.gradle.api.JavaVersion.VERSION_1_8
+
 plugins {
   alias(libs.plugins.kotlin)
 }
@@ -36,6 +38,14 @@ publishing {
   }
 }
 
+java {
+  targetCompatibility = VERSION_1_8
+  sourceCompatibility = VERSION_1_8
+}
+
+kotlin {
+  jvmToolchain(8)
+}
 
 tasks.test {
   useJUnitPlatform()

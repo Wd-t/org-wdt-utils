@@ -68,20 +68,12 @@ fun File.sizeOfDirectory(): Long {
   return FileUtils.sizeOfDirectory(this)
 }
 
-fun File.isFileNotExistsAndIsNotSameSize(long: Long): Boolean {
-  return FileUtils.isFileNotExistsAndIsNotSameSize(this, long)
-}
-
 fun File.isFileExists(): Boolean {
   return FileUtils.isFileExists(this)
 }
 
 fun File.isFileNotExists(): Boolean {
   return FileUtils.isFileNotExists(this)
-}
-
-fun File.getExtension(): String {
-  return this.extension
 }
 
 fun File.sha1(): String {

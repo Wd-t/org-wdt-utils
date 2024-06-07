@@ -7,8 +7,8 @@
 
 ### 用于
 
-- [Wdtc](https://github.com/wd-t/Wdtc)
-- [IntelliJManager](https://github.com/wd-t/IntelliJManager)
+- [Wdtc](https://github.com/wdtve/Wdtc)
+- [IntelliJManager](https://github.com/wdtve/IntelliJManager)
 
 ### 使用方法
 
@@ -21,7 +21,7 @@ repositories {
 }
 
 dependencies {
-	implementation("com.github.wd-t.utils:utils-gson:$latest_version")
-	implementation("com.github.wd-t.utils:utils-io:$latest_version")
+	implementation("com.github.wdtve.utils:utils-gson:$latest_version")
+	implementation("com.github.wdtve.utils:utils-io:$latest_version")
 }
 ```
