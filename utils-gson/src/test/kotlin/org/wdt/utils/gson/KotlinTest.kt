@@ -7,6 +7,12 @@ import kotlin.test.Test
 
 class KotlinTest {
 
+
+  @Test
+  fun test() {
+    return
+  }
+
   @Test
   fun testJsonForKotlin() {
     val jsonStr = """
