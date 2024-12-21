@@ -9,20 +9,22 @@ import java.io.File;
 import java.util.Date;
 
 public class Json {
-  public static final Gson GSON = getBuilder().create();
-  public static final GsonBuilder GSON_BUILDER = getBuilder();
+
+  public static GsonBuilder GSON_BUILDER = new GsonBuilder().disableHtmlEscaping().registerTypeAdapter(File.class, new FileTypeAdapter())
+    .registerTypeAdapter(Date.class, new DateTypeAdapter());
+
+  public static Gson GSON = GSON_BUILDER.create();
 
   public static GsonBuilder getBuilder() {
-    return new GsonBuilder().disableHtmlEscaping().registerTypeAdapter(File.class, new FileTypeAdapter())
-      .registerTypeAdapter(Date.class, new DateTypeAdapter());
+    return GSON_BUILDER;
   }
 
-  public static String toJsonString(Object o) {
-    return toJsonString(o, GSON.newBuilder());
+  public static <T> String toJsonString(T o) {
+    return toJsonString(o, GSON_BUILDER);
   }
 
-  public static String toJsonString(Object o, GsonBuilder builder) {
-    return builder.create().toJson(o);
+  public static <T> String toJsonString(T o, GsonBuilder builder) {
+    return builder.create().toJson(o, o.getClass());
   }
 
 }

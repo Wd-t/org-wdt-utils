@@ -6,9 +6,12 @@ import com.google.gson.JsonElement
 import com.google.gson.JsonObject
 import java.io.File
 
-
-fun File.formatJsonFile() {
-  this.writeObjectToFile(Json.getBuilder().setPrettyPrinting()) {
+@Deprecated(
+  "remove soon",
+  ReplaceWith("this.writeObjectToFile(builder.setPrettyPrinting()) { readFileToJsonElement() }"),
+)
+fun File.formatJsonFile(builder: GsonBuilder = Json.getBuilder()) {
+  this.writeObjectToFile(builder.setPrettyPrinting()) {
     readFileToJsonElement()
   }
 }
@@ -28,6 +31,11 @@ fun File.readFileToJsonElement(): JsonElement {
 inline fun <reified T> File.readFileToClass(builder: GsonBuilder = Json.getBuilder()): T {
   return JsonUtils.readFileToClass(this, T::class.java, builder)
 }
+
+inline fun <reified T, R> File.readFileToClass(builder: GsonBuilder = Json.getBuilder(), block: (T) -> R): R {
+  return block(JsonUtils.readFileToClass(this, T::class.java, builder))
+}
+
 
 inline fun <T> File.writeObjectToFile(builder: GsonBuilder = Json.getBuilder(), block: () -> T) {
   return JsonUtils.writeObjectToFile(this, block(), builder)

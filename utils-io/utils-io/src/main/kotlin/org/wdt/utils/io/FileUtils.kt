@@ -14,7 +14,6 @@ fun File.deleteFile() {
   FileUtils.deleteFile(this)
 }
 
-@JvmOverloads
 fun File.writeStringToFile(string: String, boolean: Boolean = false) {
   FileUtils.writeStringToFile(this, string, boolean)
 }

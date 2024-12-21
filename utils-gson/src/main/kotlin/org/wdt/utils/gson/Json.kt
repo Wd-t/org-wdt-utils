@@ -3,7 +3,7 @@ package org.wdt.utils.gson
 import com.google.gson.*
 import java.lang.reflect.Type
 
-fun Any.toJsonString(builder: GsonBuilder = Json.getBuilder()): String {
+fun <T> T.toJsonString(builder: GsonBuilder = Json.getBuilder()): String {
   return Json.toJsonString(this, builder)
 }
 
@@ -11,11 +11,11 @@ fun String.parseJsonElement(): JsonElement {
   return JsonUtils.parseJsonElement(this)
 }
 
-fun <T> GsonBuilder.toJson(any: T): String {
+inline fun <reified T> GsonBuilder.toJson(any: T): String {
   return create().toJson(any)
 }
 
-fun <T> GsonBuilder.toJson(block: () -> T): String {
+inline fun <reified T> GsonBuilder.toJson(block: () -> T): String {
   return toJson(block())
 }
 
@@ -24,13 +24,13 @@ inline fun <reified T> GsonBuilder.fromJson(jsonElement: JsonElement): T {
   return create().fromJson(jsonElement, T::class.java)
 }
 
-fun <T> GsonBuilder.toJsonTree(block: () -> T): JsonElement {
+inline fun <reified T> GsonBuilder.toJsonTree(block: () -> T): JsonElement {
   return toJsonTree(block())
 }
 
 
-fun <T> GsonBuilder.toJsonTree(any: T): JsonElement {
-  return create().toJsonTree(any)
+inline fun <reified T> GsonBuilder.toJsonTree(any: T): JsonElement {
+  return create().toJsonTree(any, T::class.java)
 }
 
 inline fun <reified T> String.parseObject(builder: GsonBuilder = Json.getBuilder()): T {
@@ -57,6 +57,6 @@ inline fun <reified T> GsonBuilder.registerSimpleObjectDeserializer(crossinline 
   })
 }
 
-inline fun <reified T> GsonBuilder.registerTypeAdapter(pair: Pair<T, TypeAdapters<T>>): GsonBuilder {
+inline fun <reified T> GsonBuilder.registerTypeAdapter(pair: Pair<T, SimpleTypeAdapter<T>>): GsonBuilder {
   return registerTypeAdapter(pair.first!!::class.java, pair.second)
 }
